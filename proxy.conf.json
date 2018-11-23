@@ -1,0 +1,18 @@
+{
+  "/access": {
+    "target": "http://localhost:8080/login",
+    "secure": false,
+    "changeOrigin": "true",
+    "pathRewrite": {
+      "^/access": ""
+    }
+  },
+  "/api": {
+    "target": "http://localhost:8080/api",
+    "secure": false,
+    "changeOrigin": "true",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

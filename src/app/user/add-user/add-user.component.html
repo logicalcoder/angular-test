@@ -1,0 +1,42 @@
+
+  <h3 mat-dialog-title>Add new user</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name" [(ngModel)]="data.name" name="name">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Address" [(ngModel)]="data.address" name="address">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Roles" [(ngModel)]="data.roles" name="roles" multiple
+            panelClass="example-panel">
+          <mat-option *ngFor="let role of rolesArr" [value]="role">{{role}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form" *ngIf="!data.id">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Username" [(ngModel)]="data.username" name="username">
+      </mat-form-field>
+    </div>
+  
+    <div class="form" *ngIf="!data.id">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" [(ngModel)]="data.password" name="password">
+      </mat-form-field>
+    </div>
+
+    <div>
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+</form>

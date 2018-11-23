@@ -1,0 +1,39 @@
+<mat-card>
+
+  <mat-card-title>
+    Users
+    <button mat-raised-button color="primary" (click)="addNew({})" class="new-btn">New User</button>
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.address}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="roles">
+        <mat-header-cell *matHeaderCellDef> Roles </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.roles}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+          </mat-header-cell>
+    
+          <mat-cell *matCellDef="let user; let i=index;">
+            <button mat-icon-button (click)="addNew(user)">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+
+</mat-card>
